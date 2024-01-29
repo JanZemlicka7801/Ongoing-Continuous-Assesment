@@ -34,11 +34,33 @@ public class DynamicArrayList {
      */
 
     public int indexOf(String toFind){
-        for(int i = 0; i < array.length; i++){
+        for(int i = 0; i < size; i++){
             if(toFind.equals(array[i])){
                 return i;
             }
         }
         return -1;
+    }
+
+    /*
+    A method called add() that takes a single parameter, a String to be added. This String should be added to the
+    end of the list. If there is insufficient space in the list, the internal array should be grown, and the String added
+    then. Null values should be allowed. The method should return a boolean indicating if the String was added.
+     */
+
+    public boolean add(String element){
+        if (size < array.length){
+            growArray();
+            array[size - 1] = element;
+            return true;
+        }
+        return false;
+    }
+
+    public void growArray(){
+        size++;
+        String [] copiedArray = new String [size];
+        System.arraycopy(this.array, 0, copiedArray, 0, size - 1);
+        this.array = copiedArray;
     }
 }
