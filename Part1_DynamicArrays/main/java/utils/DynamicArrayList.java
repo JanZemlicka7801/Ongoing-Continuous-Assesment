@@ -49,18 +49,23 @@ public class DynamicArrayList {
      */
 
     public boolean add(String element){
-        if (size < array.length){
+        if (this.hasSpace()){
             growArray();
             array[size - 1] = element;
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     public void growArray(){
         size++;
-        String [] copiedArray = new String [size];
+        String[] copiedArray = new String[size];
         System.arraycopy(this.array, 0, copiedArray, 0, size - 1);
         this.array = copiedArray;
+    }
+
+    public boolean hasSpace(){
+        return size < array.length;
     }
 }
