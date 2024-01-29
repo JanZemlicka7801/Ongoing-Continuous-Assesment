@@ -26,4 +26,19 @@ public class DynamicArrayList {
             throw new ArrayIndexOutOfBoundsException("Array Index is out of bounds.");
         return this.array[position];
     }
+
+    /*
+    A method called indexOf() that takes one parameter, a String to be found in the list. The method should return
+    an int indicating the position at which the String could be found. If the String could not be found, an appropriate
+    value should be returned to indicate this
+     */
+
+    public int indexOf(String toFind){
+        for(int i = 0; i < array.length; i++){
+            if(toFind.equals(array[i])){
+                return i;
+            }
+        }
+        return -1;
+    }
 }
